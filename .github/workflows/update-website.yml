@@ -32,5 +32,5 @@ jobs:
   
       - name: Deploy Website
         run: |
-          aws --region us-east-1 s3 sync website/ s3://aikidonyu.com --sse AES256
+          aws --region us-east-1 s3 sync . s3://aikidonyu.com --sse AES256  --exclude ".git/*" --exclude ".github/*" --exclude "deployment/*" --exclude "README.md"
           aws cloudfront create-invalidation --distribution-id E1AJTR5WPVI0VW --paths "/*"
